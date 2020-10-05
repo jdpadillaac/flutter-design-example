@@ -4,20 +4,30 @@ class BasicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        _headerImage(),
-        _rowWithTexts(),
-        _rowButtons(),
-        _bodyText()
-      ],
+        body: SingleChildScrollView(
+      child: Column(
+        children: [
+          _headerImage(),
+          _rowWithTexts(),
+          _rowButtons(),
+          _bodyText(),
+          _bodyText(),
+          _bodyText(),
+          _bodyText()
+        ],
+      ),
     ));
   }
 
   Widget _headerImage() {
-    return Image(
-      image: NetworkImage(
-          'https://cdn.pixabay.com/photo/2012/08/27/14/19/evening-55067__340.png'),
+    return Container(
+      width: double.infinity,
+      child: Image(
+        height: 180.0,
+        fit: BoxFit.cover,
+        image: NetworkImage(
+            'https://cdn.pixabay.com/photo/2012/08/27/14/19/evening-55067__340.png'),
+      ),
     );
   }
 
