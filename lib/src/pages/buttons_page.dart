@@ -5,9 +5,17 @@ class ButtonsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: _bottomNavigationBar(context),
         body: Stack(
-      children: [_background()],
-    ));
+          children: [
+            _background(),
+            SingleChildScrollView(
+              child: Column(
+                children: [_titles()],
+              ),
+            )
+          ],
+        ));
   }
 
   Widget _background() {
@@ -48,5 +56,48 @@ class ButtonsPage extends StatelessWidget {
         )
       ],
     );
+  }
+
+  Widget _titles() {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Titulo grande',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(height: 6.0),
+            Text('Titulo un poco mas pequeño pero largo',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold))
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bottomNavigationBar(BuildContext context) {
+    return Theme(
+        data: Theme.of(context).copyWith(
+            canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+            primaryColor: Colors.pinkAccent,
+            textTheme: Theme.of(context).textTheme.copyWith(
+                caption: TextStyle(color: Color.fromRGBO(166, 117, 152, 1.0)))),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                label: 'hola', icon: Icon(Icons.calendar_today)),
+            BottomNavigationBarItem(
+                label: 'hola', icon: Icon(Icons.bubble_chart)),
+            BottomNavigationBarItem(
+                label: 'hola', icon: Icon(Icons.supervised_user_circle))
+          ],
+        ));
   }
 }
